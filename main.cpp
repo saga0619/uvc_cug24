@@ -124,12 +124,12 @@ int main(int argc, char **argv)
 
     if (argc == 2)
     {
-        if (argv[1] == "mjpeg")
+        if (strcmp(argv[1], "mjpeg") == 0)
         {
             printf("mjpeg selected \n");
             format_type = UVC_FRAME_FORMAT_MJPEG;
         }
-        else if (argv[1] == "yuyv")
+        else if (strcmp(argv[1], "yuyv") == 0)
         {
             printf("yuyv selected\n");
             format_type = UVC_FRAME_FORMAT_YUYV;
@@ -139,6 +139,11 @@ int main(int argc, char **argv)
             printf("select yuyv or mjpeg\n");
             return true;
         }
+    }
+    else
+    {
+        printf("start with mode : mjpeg or yuyv \n");
+        return true;
     }
 
     im_rgb.create(720, 1280, CV_8UC3);
